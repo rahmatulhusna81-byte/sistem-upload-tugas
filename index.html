@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Upload Tugas Kuliah</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background-color: #f4f6f8;
+color: #333;
+}
+header {
+background-color: #1e3a8a;
+color: white;
+padding: 20px;
+text-align: center;
+}
+nav {
+background-color: #2563eb;
+padding: 10px;
+text-align: center;
+}
+nav a {
+color: white;
+margin: 0 15px;
+text-decoration: none;
+font-weight: bold;
+}
+.container {
+padding: 30px;
+max-width: 900px;
+margin: auto;
+}
+h2 {
+color: #1e3a8a;
+}
+form {
+background: white;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+label {
+display: block;
+margin-top: 15px;
+font-weight: bold;
+}
+input, select {
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+}
+button {
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #1e3a8a;
+color: white;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+}
+button:hover {
+background-color: #163172;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 30px;
+background: white;
+}
+th, td {
+border: 1px solid #ccc;
+padding: 10px;
+}
+th {
+background-color: #e5e7eb;
+}
+footer {
+background-color: #1e3a8a;
+color: white;
+text-align: center;
+padding: 15px;
+margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Sistem Upload Tugas Kuliah</h1>
+<p>Mata Kuliah Komputer Administrasi Pendidikan</p>
+<p>Universitas Negeri Padang</p>
+</header>
+
+<nav>
+<a href="#upload">Upload Tugas</a>
+<a href="#daftar">Daftar Tugas</a>
+</nav>
+
+<div class="container" id="upload">
+<h2>Form Upload Tugas</h2>
+<form onsubmit="tambahTugas(); return false;">
+<label>Nama Mahasiswa</label>
+<input type="text" id="nama" required>
+
+<label>NIM</label>
+<input type="text" id="nim" required>
+
+<label>Mata Kuliah</label>
+<input type="text" value="Komputer Administrasi Pendidikan" readonly>
+
+<label>Jenis Tugas</label>
+<select id="jenis">
+<option>Tugas Individu</option>
+<option>Tugas Kelompok</option>
+<option>UAS</option>
+</select>
+
+<label>Upload File (PDF/DOC)</label>
+<input type="file" id="file" required>
+
+<button type="submit">Upload Tugas</button>
+</form>
+</div>
+
+<div class="container" id="daftar">
+<h2>Daftar Tugas Terkirim</h2>
+<table>
+<thead>
+<tr>
+<th>Nama</th>
+<th>NIM</th>
+<th>Jenis Tugas</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="tabelTugas"></tbody>
+</table>
+</div>
+
+<footer>
+<p>&copy; 2026 | Sistem Upload Tugas Kuliah</p>
+</footer>
+
+<script>
+function tambahTugas() {
+const nama = document.getElementById('nama').value;
+const nim = document.getElementById('nim').value;
+const jenis = document.getElementById('jenis').value;
+
+const tabel = document.getElementById('tabelTugas');
+const row = tabel.insertRow();
+
+row.insertCell(0).innerText = nama;
+row.insertCell(1).innerText = nim;
+row.insertCell(2).innerText = jenis;
+row.insertCell(3).innerText = 'Terkirim';
+
+document.querySelector('form').reset();
+alert('Tugas berhasil diupload (simulasi).');
+}
+</script>
+
+</body>
+</html>
+
